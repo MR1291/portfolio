@@ -17,9 +17,9 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
    4. Account → API Keys → copy PUBLIC_KEY
    5. Ganti ketiga nilai di bawah ini
 ======================================================== */
-const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";   // ← ganti
-const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";   // ← ganti
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";  // ← ganti
+const EMAILJS_PUBLIC_KEY  = "R9CT2erKcryQBLxh2";   // ✓ done
+const EMAILJS_SERVICE_ID  = "service_76mrlq4";      // ✓ done
+const EMAILJS_TEMPLATE_ID = "template_9m4lsjw";     // ✓ done
 
 emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
