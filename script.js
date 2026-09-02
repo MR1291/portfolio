@@ -345,7 +345,6 @@ const modal = document.getElementById("projectModal");
 const modalClose = document.getElementById("modalClose");
 const modalTitle = document.getElementById("modalTitle");
 const modalTag = document.getElementById("modalTag");
-const modalIcon = document.getElementById("modalIcon");
 const modalTech = document.getElementById("modalTech");
 const modalBody = document.getElementById("modalBody");
 
@@ -355,7 +354,6 @@ function openProjectModal(projectId) {
 
     modalTitle.textContent = data.title;
     modalTag.textContent = data.tag;
-    modalIcon.textContent = data.icon;
     
     modalTech.innerHTML = "";
     data.tech.forEach(t => {
