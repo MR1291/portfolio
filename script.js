@@ -7,10 +7,50 @@ const observer = new IntersectionObserver(entries => entries.forEach(e => {
 }), { threshold: .12 });
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-document.getElementById("contactForm").addEventListener("submit", e => {
+/* ========================================================
+   EMAILJS — CONTACT FORM
+   Setup: https://www.emailjs.com/
+   1. Daftar akun di emailjs.com (gratis)
+   2. Add Email Service → Connect Gmail → copy SERVICE_ID
+   3. Create Email Template dengan variabel: {{from_name}}, {{from_email}}, {{message}}
+      → copy TEMPLATE_ID
+   4. Account → API Keys → copy PUBLIC_KEY
+   5. Ganti ketiga nilai di bawah ini
+======================================================== */
+const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";   // ← ganti
+const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";   // ← ganti
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";  // ← ganti
+
+emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+document.getElementById("contactForm").addEventListener("submit", function(e) {
     e.preventDefault();
-    document.getElementById("formStatus").textContent = "Form berhasil disiapkan. Hubungkan ke email service/backend untuk menerima pesan secara nyata.";
+
+    const btn    = document.getElementById("submitBtn");
+    const status = document.getElementById("formStatus");
+
+    btn.disabled    = true;
+    btn.textContent = "Mengirim...";
+    status.textContent = "";
+    status.style.color = "";
+
+    emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
+        .then(() => {
+            status.textContent = "✓ Pesan berhasil terkirim! Terima kasih, saya akan segera membalas.";
+            status.style.color = "#75e6a4";
+            this.reset();
+            btn.disabled    = false;
+            btn.textContent = "Kirim Pesan ↗";
+        })
+        .catch((err) => {
+            console.error("EmailJS error:", err);
+            status.textContent = "✕ Gagal mengirim pesan. Silakan hubungi via WhatsApp atau email langsung.";
+            status.style.color = "#f87171";
+            btn.disabled    = false;
+            btn.textContent = "Kirim Pesan ↗";
+        });
 });
+
 
 document.getElementById("certificateHint").addEventListener("click", () => alert("Struktur sertifikat sudah tersedia. Ganti card ini dengan data dan gambar sertifikatmu."));
 

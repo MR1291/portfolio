@@ -12,6 +12,8 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -431,10 +433,11 @@ Web Developer
                         <div><small>WhatsApp</small><b>+62 821-4629-6264</b></div>
                     </a>
                 </div>
-                <form class="contact-form reveal" id="contactForm"><input required placeholder="Nama"
-                        aria-label="Nama"><input required type="email" placeholder="Email" aria-label="Email"><textarea
-                        required placeholder="Pesan" aria-label="Pesan"></textarea><button class="btn primary"
-                        type="submit">Kirim Pesan ↗</button>
+                <form class="contact-form reveal" id="contactForm">
+                    <input name="from_name" required placeholder="Nama" aria-label="Nama">
+                    <input name="from_email" required type="email" placeholder="Email" aria-label="Email">
+                    <textarea name="message" required placeholder="Pesan" aria-label="Pesan"></textarea>
+                    <button class="btn primary" type="submit" id="submitBtn">Kirim Pesan ↗</button>
                     <p id="formStatus"></p>
                 </form>
             </div>
