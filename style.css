@@ -831,6 +831,9 @@ body:after {
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
+    overflow-x: hidden;
+    word-break: break-word;
+    overflow-wrap: break-word;
     padding: 42px 48px;
     position: relative;
     box-shadow: 0 35px 110px rgba(0, 0, 0, .9), 0 0 55px rgba(37, 211, 238, .15);
@@ -997,17 +1000,10 @@ body:after {
     font: 13.5px/1.85 ui-monospace, SFMono-Regular, Consolas, monospace;
     color: #75e6a4;
     margin: 14px 0;
-    overflow-x: auto;
-    white-space: pre;
-}
-
-.modal-diagram::-webkit-scrollbar {
-    height: 6px;
-}
-
-.modal-diagram::-webkit-scrollbar-thumb {
-    background: rgba(37, 211, 238, .3);
-    border-radius: 6px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 .modal-callout {
